@@ -1,10 +1,16 @@
-import { Context, Hono } from 'hono';
+import { Context, Hono, Next } from 'hono';
+import { cors } from 'hono/cors';
 import AuthRoute from './routes/auth.route';
 import HttpError from './helpers/http-error.helper';
 
 const app = new Hono();
 
-app.route('/auth', AuthRoute);
+app.use('*', async (ctx: Context, next: Next): Promise<void | Response> => {
+    return await cors({
+        origin: [ctx.env.CLIENT_ORIGIN_URL],
+        credentials: true,
+    })(ctx, next);
+});
 
 app.onError((err, ctx: Context) => {
     ctx.status(err instanceof HttpError ? err.status : 500);
@@ -15,5 +21,7 @@ app.onError((err, ctx: Context) => {
         data: null,
     });
 });
+
+app.route('/auth', AuthRoute);
 
 export default app;
