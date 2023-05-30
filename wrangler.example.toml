@@ -1,0 +1,7 @@
+name = "hono-jwt"
+compatibility_date = "2023-01-01"
+
+[vars]
+CLIENT_ORIGIN_URL = "http://localhost:3000"
+JWT_SECRET_KEY = ""
+PRISMA_PROXY_URL = ""
