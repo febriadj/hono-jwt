@@ -1,6 +1,7 @@
 import { Context, Hono, Next } from 'hono';
 import { cors } from 'hono/cors';
 import AuthRoute from './routes/auth.route';
+import UsersRoute from './routes/users.route';
 import HttpError from './helpers/http-error.helper';
 
 const app = new Hono();
@@ -23,5 +24,6 @@ app.onError((err, ctx: Context) => {
 });
 
 app.route('/auth', AuthRoute);
+app.route('/users', UsersRoute);
 
 export default app;
