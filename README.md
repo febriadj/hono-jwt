@@ -7,7 +7,7 @@ The main purpose of this repository is to demonstrate JWT authentication and coo
 **Step 1:** Clone this repository.
 
 ```bash
-git clone https://github.com/febriadj/lk21-api.git
+git clone https://github.com/febriadj/hono-jwt.git
 ```
 
 **Step 2:** Rename the `wrangler.example.toml` file to `wrangler.toml`.
